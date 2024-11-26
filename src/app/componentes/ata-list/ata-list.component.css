@@ -1,0 +1,28 @@
+.filtros {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    gap: 0.6rem;
+  }
+}
+
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+}
+
+.table {
+  margin: 0;
+}
+
+a {
+  color: black;
+}
+
+button {
+  background-color: white;
+  border: none;
+}

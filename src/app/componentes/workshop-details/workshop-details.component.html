@@ -1,0 +1,9 @@
+<div *ngIf="workshop" class="mt-4">
+    <h2>{{ workshop?.nome }}</h2>
+    <p><strong>Data:</strong> {{ workshop?.dataRealizacao| date:'dd/MM/yyyy' }}</p>
+    <p><strong>Descrição:</strong> {{ workshop?.descricao }}</p>
+    <h3>Colaboradores Presentes:</h3>
+    <ul>
+      <li *ngFor="let colaborador of workshop.colaboradores">{{ colaborador.nome }}</li>
+    </ul>
+  </div>

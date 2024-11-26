@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h1>Rastreamento em Workshops</h1>
+
+    <div class="row mb-3 filtros" >
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Filtrar por Workshop" [(ngModel)]="workshopFilter" (input)="applyFilters()">
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control" [(ngModel)]="dataFilter" (input)="applyFilters()">
+      </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Filtrar por Colaborador" [(ngModel)]="colaboradorFilter" (input)="applyFilters()">
+      </div>
+      <div class="col-md-1">
+        <button type="button" (click)="clearFilters()">X</button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Workshop</th>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Colaboradores</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ata of atas$ | async">
+            <td><a href="javascript:void(0)" (click)="selectWorkshop(ata.workshop.id)">{{ ata.workshop.nome }}</a></td>
+            <td>{{ ata.workshop.dataRealizacao | date:'dd/MM/yyyy' }}</td>
+            <td>{{ ata.workshop.descricao }}</td>
+            <td>
+              <ul class="list-unstyled">
+                <li *ngFor="let colaborador of ata.colaboradores">{{ colaborador.nome }}</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <app-workshop-details *ngIf="selectedWorkshop" [workshopId]="selectedWorkshop"></app-workshop-details>
+  </div>
